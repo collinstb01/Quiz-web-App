@@ -1,8 +1,11 @@
+import { formatDurationMs } from '../utils/formatDuration.js'
+
 export default function ResultsScreen({
   subjectName,
   score,
   total,
   wrongQuestions,
+  totalAnswerTimeMs = 0,
   onRetryFailed,
   onNewQuiz,
 }) {
@@ -22,6 +25,12 @@ export default function ResultsScreen({
               ? 'Review the questions you missed below.'
               : 'Great effort — try another subject anytime.'}
         </p>
+        {total > 0 && totalAnswerTimeMs > 0 && (
+          <p className="results-time subtle">
+            Total time answering questions:{' '}
+            <strong>{formatDurationMs(totalAnswerTimeMs)}</strong>
+          </p>
+        )}
       </header>
 
       {hasFailed && (

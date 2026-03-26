@@ -19,8 +19,10 @@ export default function App() {
   const [score, setScore] = useState(0)
   const [wrongQuestions, setWrongQuestions] = useState([])
   const [feedback, setFeedback] = useState(null)
+  const [answerDurationsMs, setAnswerDurationsMs] = useState([])
 
   const timeoutRef = useRef(null)
+  const questionStartMsRef = useRef(0)
 
   const subject = subjectId ? getSubjectById(subjectId) : null
 
@@ -33,6 +35,11 @@ export default function App() {
 
   useEffect(() => () => clearTimer(), [clearTimer])
 
+  useEffect(() => {
+    if (screen !== 'quiz' || feedback) return
+    questionStartMsRef.current = Date.now()
+  }, [screen, feedback])
+
   const goHome = useCallback(() => {
     clearTimer()
     setScreen('home')
@@ -42,6 +49,7 @@ export default function App() {
     setScore(0)
     setWrongQuestions([])
     setFeedback(null)
+    setAnswerDurationsMs([])
   }, [clearTimer])
 
   const handleSelectSubject = useCallback((id) => {
@@ -62,6 +70,7 @@ export default function App() {
       setScore(0)
       setWrongQuestions([])
       setFeedback(null)
+      setAnswerDurationsMs([])
       setScreen('quiz')
     },
     [clearTimer],
@@ -83,10 +92,13 @@ export default function App() {
       if (!q) return
 
       const correct = option === q.answer
+      const timeSpentMs = Date.now() - questionStartMsRef.current
+      setAnswerDurationsMs((d) => [...d, timeSpentMs])
       setFeedback({
         correct,
         selected: option,
         correctAnswer: q.answer,
+        timeSpentMs,
       })
 
       if (correct) {
@@ -182,6 +194,7 @@ export default function App() {
           score={score}
           total={quizQuestions.length}
           wrongQuestions={wrongQuestions}
+          totalAnswerTimeMs={answerDurationsMs.reduce((a, b) => a + b, 0)}
           onRetryFailed={handleRetryFailed}
           onNewQuiz={goHome}
         />
