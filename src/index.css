@@ -1,0 +1,93 @@
+:root {
+  --quiz-heading: #0f172a;
+  --quiz-muted: #64748b;
+  --quiz-border: #e2e8f0;
+  --quiz-surface: #ffffff;
+  --quiz-input-bg: #f8fafc;
+  --quiz-progress-track: #e2e8f0;
+  --quiz-accent: #4f46e5;
+  --quiz-accent-dim: #6366f1;
+  --quiz-accent-soft: rgba(79, 70, 229, 0.08);
+  --quiz-accent-border: rgba(79, 70, 229, 0.35);
+  --quiz-accent-ring: rgba(79, 70, 229, 0.25);
+  --quiz-success: #16a34a;
+  --quiz-success-bg: rgba(22, 163, 74, 0.12);
+  --quiz-success-border: rgba(22, 163, 74, 0.35);
+  --quiz-success-text: #14532d;
+  --quiz-danger: #dc2626;
+  --quiz-danger-bg: rgba(220, 38, 38, 0.1);
+  --quiz-danger-border: rgba(220, 38, 38, 0.35);
+  --quiz-danger-text: #7f1d1d;
+  --quiz-wrong-item-bg: #fef2f2;
+  --quiz-shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+  --quiz-shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
+
+  font-family:
+    'Inter',
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--quiz-muted);
+  background: var(--quiz-page-bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --quiz-heading: #f1f5f9;
+    --quiz-muted: #94a3b8;
+    --quiz-border: #334155;
+    --quiz-surface: #1e293b;
+    --quiz-input-bg: #0f172a;
+    --quiz-progress-track: #334155;
+    --quiz-page-bg: #0f172a;
+    --quiz-accent: #818cf8;
+    --quiz-accent-dim: #a5b4fc;
+    --quiz-accent-soft: rgba(129, 140, 248, 0.12);
+    --quiz-accent-border: rgba(129, 140, 248, 0.4);
+    --quiz-accent-ring: rgba(129, 140, 248, 0.3);
+    --quiz-success: #4ade80;
+    --quiz-success-bg: rgba(74, 222, 128, 0.12);
+    --quiz-success-border: rgba(74, 222, 128, 0.35);
+    --quiz-success-text: #bbf7d0;
+    --quiz-danger: #f87171;
+    --quiz-danger-bg: rgba(248, 113, 113, 0.12);
+    --quiz-danger-border: rgba(248, 113, 113, 0.35);
+    --quiz-danger-text: #fecaca;
+    --quiz-wrong-item-bg: rgba(127, 29, 29, 0.2);
+    --quiz-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+    --quiz-shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
+  }
+}
+
+:root {
+  --quiz-page-bg: #f1f5f9;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --quiz-page-bg: #0f172a;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+}
+
+#root {
+  min-height: 100svh;
+}
